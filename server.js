@@ -60,13 +60,8 @@ app.get('/b/:codigo', (req, res) => {
     });
 });
 
-// 4. ENDPOINT CATCH-ALL: Redirigir al sitio principal
-app.get('/', (req, res) => {
-    res.redirect(301, 'https://www.santaana.com.gt/');
-});
-
-// Redirigir cualquier otra ruta inventada o con error
-app.get('*', (req, res) => {
+// 4. ENDPOINT CATCH-ALL: Redirigir cualquier otra ruta (incluyendo la raíz) al sitio principal
+app.use((req, res) => {
     res.redirect(301, 'https://www.santaana.com.gt/');
 });
 
