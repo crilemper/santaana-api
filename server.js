@@ -60,6 +60,16 @@ app.get('/b/:codigo', (req, res) => {
     });
 });
 
+// 4. ENDPOINT CATCH-ALL: Redirigir al sitio principal
+app.get('/', (req, res) => {
+    res.redirect(301, 'https://www.santaana.com.gt/');
+});
+
+// Redirigir cualquier otra ruta inventada o con error
+app.get('*', (req, res) => {
+    res.redirect(301, 'https://www.santaana.com.gt/');
+});
+
 app.listen(PORT, () => {
     console.log(`Microservicio Santa Ana corriendo internamente en el puerto ${PORT}`);
 });
